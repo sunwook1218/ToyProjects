@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="quotationns">
+
+	<select id="getQuotationList" parameterType="map" resultType="quotation">
+	<![CDATA[
+		select * 
+		  from (
+				select *  
+				  from ${code}
+				 order by rec_date desc 
+			   )
+		 where rownum <=60
+	]]> 
+	</select>
+	
+</mapper>

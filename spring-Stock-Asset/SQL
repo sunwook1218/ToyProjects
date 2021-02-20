@@ -1,0 +1,104 @@
+create table member (
+    idx number,
+    id varchar2(30),
+    name varchar2(30),
+    password varchar2(30),
+    email varchar2(30),
+    address varchar2(50),
+    isAdmin varchar2(3),
+    gender varchar(10)
+    );
+
+create SEQUENCE seq_member;
+
+insert into member values(SEQ_MEMBER.nextval, 'master2', 'master', 'master', 'master', 'master',  'y') ;
+
+alter table member modify (
+ id varchar2(30) unique
+);
+
+select * from member;
+
+
+select * from member where id = 'master' and password = 'master';
+select * from member where id = 'master' 
+
+select * 
+from (
+select *  from no000270
+order by rec_date desc
+)
+where rownum <= 60;
+
+select * from stock where name like '%삼성%' order by name;
+
+select * from stock where code like '%00%' order by name;
+
+create table account (
+	idx number primary key,
+	m_idx number,
+	balance number,
+	remark varchar2(500),
+	a_num number
+	)
+
+create SEQUENCE seq_accountnum START with 1103023231;
+
+alter table account modify (
+ remark varchar2(100) DEFAULT '증권거래용'
+);
+
+
+create table tradinghistory (
+idx number primary key, 
+m_idx number,
+t_date date DEFAULT sysdate,
+s_code varchar2(10),
+amount number,
+price number,
+action varchar2(5)
+);
+
+create SEQUENCE seq_tradinghistory;
+
+insert into tradinghistory values (seq_tradinghistory.nextval, 21, sysdate, 005930, 20, 60000, 'p');
+
+select * from tradinghistory;
+
+create table holdings (
+idx number primary key,
+m_idx number,
+s_code varchar(10),
+amount number,
+p_price number
+)
+
+create SEQUENCE seq_holdings;
+
+create table board (
+idx number primary key,
+m_id varchar2(50),
+m_idx number,
+title varchar2(200),
+content varchar2(4000),
+readcount number,
+reg_date date,
+del varchar2(10),
+likecount number,
+file_name varchar2(300)
+)
+
+create SEQUENCE seq_board;
+
+create table b_comment (
+idx number primary key,
+b_idx number,
+m_id varchar2(50),
+content varchar2(500),
+reg_date date DEFAULT sysdate,
+del varchar(5) default 'n'
+)
+
+create SEQUENCE seq_b_comment;
+
+insert into b_comment values (seq_b_comment.nextval , 1, 'sunwook1218', 'content', '2020.09.24', 'n');

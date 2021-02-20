@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="stockns">
+
+	<select id="getStockListByCode" parameterType="map" resultType="stock">
+		select * from stock where code like upper('%${query}%') order by name
+	</select>
+
+	<select id="getStockListByName" parameterType="map" resultType="stock">
+		select * from stock where name like upper('%${query}%') order by name
+	</select>
+ 	
+	<select id="getListByCode" parameterType="stock" resultType="stock">
+		select * from (
+			select a.*, rownum rn from ( 
+				select * from stock where code like upper('%${search}%') order by name asc) 
+			a )
+		where rn between ${startRow} and ${endRow}
+	</select>
+	
+	<select id="getListByName" parameterType="stock" resultType="stock">
+		select * from (
+			select a.*, rownum rn from ( 
+				select * from stock where name like upper('%${search}%') order by name asc) 
+			a )
+		where rn between ${startRow} and ${endRow}
+	</select>
+	
+	<select id="getStockName" parameterType="map" resultType="String">
+		select name from stock where code like #{code}
+	</select>
+	
+	<select id="getTotalByCode" parameterType="string" resultType="integer">
+		select count(*) from stock where code like '%${query}%'
+	</select>
+	
+	<select id="getTotalByName" parameterType="string" resultType="integer">
+		select count(*) from stock where name like '%${query}%'
+	</select>
+</mapper>

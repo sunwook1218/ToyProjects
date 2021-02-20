@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="memberns">
+
+	<insert id="join" parameterType="member">
+		insert into member values (SEQ_MEMBER.nextval, #{id}, #{name}, #{password}, #{email}, #{address}, #{isAdmin}, #{gender})
+	</insert>
+	
+	<select id="getMember" parameterType="member" resultType="member">
+		select * from member where id = #{id} and password = #{password}		
+	</select>
+	
+	<select id="getMemberById" parameterType="string" resultType="member">
+		select * from member where id = #{id}
+	</select>
+	
+</mapper>

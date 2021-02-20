@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias alias="member" type="com.sun.model.Member" />
+		<typeAlias alias="quotation" type="com.sun.model.Quotation" />
+		<typeAlias alias="stock" type="com.sun.model.Stock" />
+		<typeAlias alias="account" type="com.sun.model.Account" />
+		<typeAlias alias="tradinghistory" type="com.sun.model.TradingHistory"/>
+		<typeAlias alias="holdings" type="com.sun.model.Holdings"/>
+		<typeAlias alias="investdata" type="com.sun.model.InvestData"/>
+		<typeAlias alias="board" type="com.sun.model.Board"/>
+		<!-- <typeAlias alias="rb" type="com.ch.ch10.model.ReplyBoard"/> -->
+	</typeAliases>
+	<mappers>
+		<mapper resource="member.xml" />
+		<mapper resource="quotation.xml" />
+		<mapper resource="stock.xml" />
+		<mapper resource="account.xml" />
+		<mapper resource="tradingHistory.xml" />
+		<mapper resource="holdings.xml"/>
+		<mapper resource="board.xml" />
+		<!-- <mapper resource="rbd.xml" /> -->
+	</mappers>
+</configuration>

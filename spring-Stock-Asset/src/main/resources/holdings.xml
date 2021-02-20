@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="holdingsns">
+
+	<select id="getHoldingByCode" parameterType="investdata" resultType="holdings">
+		select * from holdings where m_idx = ${m_idx} and s_code = #{s_code}
+	</select>
+	
+	<select id="getListByM_idx" parameterType="integer" resultType="holdings">
+		select * from holdings where m_idx = ${m_idx} 
+	</select>
+	
+	<insert id="insertNew" parameterType="holdings">
+		insert into holdings values (seq_holdings.nextval, ${m_idx}, #{s_code}, ${amount}, ${p_price})
+	</insert>
+	
+	<update id="update" parameterType="holdings">
+		update holdings set amount=${amount} , p_price=${p_price} where idx = ${idx}
+	</update>
+	
+	<delete id="delete" parameterType="holdings">
+		delete holdings where idx = ${idx}
+	</delete>
+	
+	<delete id="treat" parameterType="integer">
+		delete holdings where m_idx = ${m_idx} and amount = 0
+	</delete>
+
+</mapper>

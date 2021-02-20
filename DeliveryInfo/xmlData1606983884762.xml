@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Result>
+	<status>false</status>
+	<message>동일한 운송장의 하루 요청 건수를 초과 하였습니다.</message>
+	<Code>105</Code>
+</Result>
